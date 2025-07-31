@@ -28,6 +28,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!196 &2
 NavMeshSettings:
@@ -63,6 +64,54 @@ OcclusionCullingSettings:
     backfaceThreshold: 100
   m_SceneGUID: 00000000000000000000000000000000
   m_OcclusionCullingData: {fileID: 0}
+--- !u!114 &18324369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878013518701920707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForceMultiplier: 100
+  maxForce: 100
+  dragPlaneZ: 30
+  forwardZ: 100
+--- !u!114 &444221484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878013518701920298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForceMultiplier: 100
+  maxForce: 100
+  dragPlaneZ: 30
+  forwardZ: 100
+--- !u!114 &1790559131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878013518701920350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForceMultiplier: 100
+  maxForce: 100
+  dragPlaneZ: 30
+  forwardZ: 100
 --- !u!1 &2878013518701920256
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +448,7 @@ GameObject:
   - component: {fileID: 2878013520950068042}
   - component: {fileID: 2878013519591113512}
   - component: {fileID: 2878013520295756609}
+  - component: {fileID: 444221484}
   m_Layer: 9
   m_Name: 4
   m_TagString: ballTag
@@ -453,6 +503,7 @@ GameObject:
   - component: {fileID: 2878013520950068043}
   - component: {fileID: 2878013519591113513}
   - component: {fileID: 2878013520295756610}
+  - component: {fileID: 1790559131}
   m_Layer: 9
   m_Name: 1
   m_TagString: ballTag
@@ -1344,6 +1395,7 @@ GameObject:
   - component: {fileID: 2878013520950068049}
   - component: {fileID: 2878013519591113517}
   - component: {fileID: 2878013520295756612}
+  - component: {fileID: 18324369}
   m_Layer: 9
   m_Name: 2
   m_TagString: ballTag
@@ -1399,6 +1451,7 @@ GameObject:
   - component: {fileID: 2878013520950068050}
   - component: {fileID: 2878013519591113518}
   - component: {fileID: 2878013520295756613}
+  - component: {fileID: 2878013520950068054}
   m_Layer: 9
   m_Name: 3
   m_TagString: ballTag
@@ -1685,6 +1738,7 @@ GameObject:
   - component: {fileID: 2878013520950068052}
   - component: {fileID: 2878013519591113519}
   - component: {fileID: 2878013520295756614}
+  - component: {fileID: 2878013520950068055}
   m_Layer: 9
   m_Name: 0
   m_TagString: ballTag
@@ -5688,8 +5742,8 @@ Rigidbody:
   m_GameObject: {fileID: 2878013518701920298}
   serializedVersion: 4
   m_Mass: 2
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 0.1
+  m_AngularDrag: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5704,7 +5758,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!54 &2878013519591113513
 Rigidbody:
@@ -5715,8 +5769,8 @@ Rigidbody:
   m_GameObject: {fileID: 2878013518701920350}
   serializedVersion: 4
   m_Mass: 2
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 0.1
+  m_AngularDrag: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5731,7 +5785,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!54 &2878013519591113514
 Rigidbody:
@@ -5823,8 +5877,8 @@ Rigidbody:
   m_GameObject: {fileID: 2878013518701920707}
   serializedVersion: 4
   m_Mass: 2
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 0.1
+  m_AngularDrag: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5839,7 +5893,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!54 &2878013519591113518
 Rigidbody:
@@ -5850,8 +5904,8 @@ Rigidbody:
   m_GameObject: {fileID: 2878013518701920742}
   serializedVersion: 4
   m_Mass: 2
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 0.1
+  m_AngularDrag: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5866,7 +5920,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!54 &2878013519591113519
 Rigidbody:
@@ -5877,8 +5931,8 @@ Rigidbody:
   m_GameObject: {fileID: 2878013518701920827}
   serializedVersion: 4
   m_Mass: 2
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 0.1
+  m_AngularDrag: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5893,7 +5947,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!59 &2878013519674999600
 HingeJoint:
@@ -7219,6 +7273,38 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2878013520950068054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878013518701920742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForceMultiplier: 100
+  maxForce: 100
+  dragPlaneZ: 30
+  forwardZ: 100
+--- !u!114 &2878013520950068055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878013518701920827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForceMultiplier: 100
+  maxForce: 100
+  dragPlaneZ: 30
+  forwardZ: 100
 --- !u!136 &2878013520966845270
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -50087,7 +50173,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 600200fb42c4b0d600000000000000d2, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -50162,7 +50247,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 651745fb42c1a59300000000000000e4, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
