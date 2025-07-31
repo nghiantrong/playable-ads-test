@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public GameObject camera1;
     public GameObject camera2;
-    public GameObject blurredBG;
+    public Canvas canvas;
 
     void Update()
     {
@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
         Debug.Log("Switching to camera 1");
         camera1.SetActive(true);
         camera2.SetActive(false);
-        blurredBG.SetActive(false);
+        canvas.enabled = true;
     }
 
     public void SwitchToCamera2()
@@ -33,6 +33,7 @@ public class CameraController : MonoBehaviour
         Debug.Log("Switching to camera 2");
         camera1.SetActive(false);
         camera2.SetActive(true);
-        blurredBG.SetActive(true);
+        canvas.enabled = false;
+
     }
 }
