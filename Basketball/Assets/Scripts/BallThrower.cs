@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static InputHelper;
 
 public class BallThrower : MonoBehaviour
 {
@@ -41,18 +42,6 @@ public class BallThrower : MonoBehaviour
             ReleaseAndThrow(currentScreenTouchPos);
         }
     }
-
-    bool IsTouchBegin() =>
-        Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began);
-
-    bool IsTouching() =>
-        Input.GetMouseButton(0) || (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(0).phase == TouchPhase.Stationary));
-
-    bool IsTouchEnd() =>
-        Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended);
-
-    Vector3 GetTouchPosition() =>
-        (Input.touchCount > 0) ? Input.GetTouch(0).position : Input.mousePosition;
 
     void TryPickUpThisBall(Vector3 screenTouchPos)
     {

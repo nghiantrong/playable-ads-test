@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        //Testing
         if (Input.GetKeyDown(KeyCode.C))
         {
             SwitchToCamera1();
