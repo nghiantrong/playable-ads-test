@@ -28,7 +28,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311935, g: 0.38074002, b: 0.3587273, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!196 &2
 NavMeshSettings:
@@ -363,7 +363,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 647278494}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1493458987}
+        m_TargetAssemblyTypeName: BallSelectionController, Assembly-CSharp
+        m_MethodName: Back
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &647278494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,7 +511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &855321380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,7 +766,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1252689936}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1493458987}
+        m_TargetAssemblyTypeName: BallSelectionController, Assembly-CSharp
+        m_MethodName: SelectBall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1252689936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,6 +832,21 @@ MonoBehaviour:
   rotationSpeed: 0.7
   ballSelectionRing: {fileID: 605388797}
   snapDuration: 0.2
+  selectionBalls:
+  - {fileID: 2878013518701920616}
+  - {fileID: 2878013518701920830}
+  - {fileID: 2878013518701920768}
+  - {fileID: 2878013518701920354}
+  - {fileID: 2878013518701920560}
+  - {fileID: 2878013518701920269}
+  - {fileID: 2878013518701920693}
+  - {fileID: 2878013518701920466}
+  balls:
+  - {fileID: 2878013518701920827}
+  - {fileID: 2878013518701920350}
+  - {fileID: 2878013518701920707}
+  - {fileID: 2878013518701920742}
+  - {fileID: 2878013518701920298}
 --- !u!1 &1671659245
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +953,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera1: {fileID: 2878013518701920267}
   camera2: {fileID: 2878013518701920831}
-  canvas: {fileID: 127803950}
+  mainCanvas: {fileID: 127803947}
+  selectionCanvas: {fileID: 855321379}
 --- !u!4 &1713244163
 Transform:
   m_ObjectHideFlags: 0
@@ -2833,7 +2873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2878013518701920836
 GameObject:
   m_ObjectHideFlags: 0

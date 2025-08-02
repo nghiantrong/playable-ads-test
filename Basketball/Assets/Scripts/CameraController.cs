@@ -6,7 +6,8 @@ public class CameraController : MonoBehaviour
 {
     public GameObject camera1;
     public GameObject camera2;
-    public Canvas canvas;
+    public GameObject mainCanvas;
+    public GameObject selectionCanvas;
 
     void Update()
     {
@@ -26,7 +27,8 @@ public class CameraController : MonoBehaviour
         Debug.Log("Switching to camera 1");
         camera1.SetActive(true);
         camera2.SetActive(false);
-        canvas.enabled = true;
+        mainCanvas.SetActive(true);
+        selectionCanvas.SetActive(false);
     }
 
     public void SwitchToCamera2()
@@ -34,7 +36,7 @@ public class CameraController : MonoBehaviour
         Debug.Log("Switching to camera 2");
         camera1.SetActive(false);
         camera2.SetActive(true);
-        canvas.enabled = false;
-
+        mainCanvas.SetActive(false);
+        selectionCanvas.SetActive(true);
     }
 }

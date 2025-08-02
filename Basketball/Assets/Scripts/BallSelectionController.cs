@@ -14,6 +14,17 @@ public class BallSelectionController : MonoBehaviour
 
     public float snapDuration = 0.2f;
     private Coroutine snapToRingCoroutine;
+    private int currentBallIndex = 0;
+    public GameObject[] selectionBalls;
+    public GameObject[] balls;
+
+    private CameraController cameraController;
+
+
+    private void Start()
+    {
+        cameraController = FindObjectOfType<CameraController>();
+    }
 
     private void Update()
     {
@@ -71,23 +82,54 @@ public class BallSelectionController : MonoBehaviour
 
     private float GetNearestSnapAngle(float currentY)
     {
-        // Normalize to -180 to 180
         float normalized = Mathf.DeltaAngle(0, currentY);
 
-        float[] snapAngles = { -180, -135, -90, -45, 0, 45, 90, 135, 180 };
+        float[] snapAngles = { 0, -45, -90, -135, 180, 135, 90, 45 };
         float closest = snapAngles[0];
         float minDiff = Mathf.Abs(normalized - closest);
 
-        for (int i = 1; i < snapAngles.Length; i++)
+        for (int i = 0; i < snapAngles.Length; i++)
         {
             float diff = Mathf.Abs(normalized - snapAngles[i]);
-            if (diff < minDiff)
+            if (diff <= minDiff)
             {
                 closest = snapAngles[i];
                 minDiff = diff;
+                currentBallIndex = i;
             }
         }
+        Debug.Log($"Selected ball index: {currentBallIndex}, angle: {closest}");
 
         return closest;
     }
+
+    public void SelectBall()
+    {
+        if (selectionBalls.Length == 0 || currentBallIndex < 0 || currentBallIndex >= selectionBalls.Length)
+        {
+            Debug.LogWarning("No balls available for selection.");
+            return;
+        }
+
+        GameObject selectedBall = selectionBalls[currentBallIndex];
+        foreach (GameObject ball in balls)
+        {
+            ball.GetComponentInChildren<MeshRenderer>().material = selectedBall.GetComponentInChildren<MeshRenderer>().material;
+        }
+
+        Back();
+    }
+
+    public void Back()
+    {
+        if (cameraController != null)
+        {
+            cameraController.SwitchToCamera1();
+        }
+        else
+        {
+            Debug.LogWarning("CameraController not found in the scene.");
+        }
+    }
+
 }
