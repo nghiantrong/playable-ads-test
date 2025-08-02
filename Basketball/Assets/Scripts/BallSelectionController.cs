@@ -12,6 +12,9 @@ public class BallSelectionController : MonoBehaviour
     public float rotationSpeed = 0.5f;
     public GameObject ballSelectionRing;
 
+    public float snapDuration = 0.2f;
+    private Coroutine snapToRingCoroutine;
+
     private void Update()
     {
         if (IsTouchBegin())
@@ -19,6 +22,12 @@ public class BallSelectionController : MonoBehaviour
             isHolding = true;
             previousTouchPos = GetTouchPosition();
             ballSelectionRing.SetActive(false);
+
+            if (snapToRingCoroutine != null)
+            {
+                StopCoroutine(snapToRingCoroutine);
+                snapToRingCoroutine = null;
+            }
         }
 
         if (isHolding && IsTouching())
@@ -35,6 +44,50 @@ public class BallSelectionController : MonoBehaviour
         {
             isHolding = false;
             ballSelectionRing.SetActive(true);
+
+            snapToRingCoroutine = StartCoroutine(SnapToRing());
         }
+    }
+
+    private IEnumerator SnapToRing()
+    {
+        float startY = transform.rotation.eulerAngles.y;
+        float targetY = GetNearestSnapAngle(startY);
+        float elapsedTime = 0f;
+
+        Quaternion startRot = transform.rotation;
+        Quaternion endRot = Quaternion.Euler(0, targetY, 0);
+
+        while (elapsedTime < snapDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(startRot, endRot, elapsedTime / snapDuration);
+            yield return null;
+        }
+
+        transform.rotation = endRot;
+        snapToRingCoroutine = null;
+    }
+
+    private float GetNearestSnapAngle(float currentY)
+    {
+        // Normalize to -180 to 180
+        float normalized = Mathf.DeltaAngle(0, currentY);
+
+        float[] snapAngles = { -180, -135, -90, -45, 0, 45, 90, 135, 180 };
+        float closest = snapAngles[0];
+        float minDiff = Mathf.Abs(normalized - closest);
+
+        for (int i = 1; i < snapAngles.Length; i++)
+        {
+            float diff = Mathf.Abs(normalized - snapAngles[i]);
+            if (diff < minDiff)
+            {
+                closest = snapAngles[i];
+                minDiff = diff;
+            }
+        }
+
+        return closest;
     }
 }
