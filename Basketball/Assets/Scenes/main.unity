@@ -1078,7 +1078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1314151475
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1170,6 +1170,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScoreText: {fileID: 1816597299}
+  highScoreText: {fileID: 441546925}
+  boardText: {fileID: 1314151476}
+  perfectParticle: {fileID: 2878013522007032693}
+  fireParticle: {fileID: 2878013522007032674}
 --- !u!4 &1351173658
 Transform:
   m_ObjectHideFlags: 0
