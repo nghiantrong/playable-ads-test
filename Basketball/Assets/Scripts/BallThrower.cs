@@ -5,6 +5,8 @@ using static InputHelper;
 
 public class BallThrower : MonoBehaviour
 {
+    private static BallThrower currentlyHeldBall = null;
+
     private Rigidbody rb;
     private Camera cam;
 
@@ -13,11 +15,11 @@ public class BallThrower : MonoBehaviour
     private Vector3 currentScreenTouchPos;
 
     [Header("Throw Settings")]
-    public float throwForceMultiplier = 100f;
-    public float maxForce = 100f;
-    public float forwardZ = 100f;
+    public float throwForceMultiplier = 80f;
+    public float maxForce = 90f;
+    public float forwardZ = 75f;
 
-    public float spinMultiplier = 10f;
+    public float spinMultiplier = 30f;
 
     void Start()
     {
@@ -46,6 +48,8 @@ public class BallThrower : MonoBehaviour
 
     void TryPickUpThisBall(Vector3 screenTouchPos)
     {
+        if (currentlyHeldBall != null) { return; }
+
         Ray ray = cam.ScreenPointToRay(screenTouchPos);
         RaycastHit[] hits = Physics.RaycastAll(ray, 100f);
 
@@ -54,6 +58,7 @@ public class BallThrower : MonoBehaviour
             if (hit.collider == GetComponent<Collider>())
             {
                 isHolding = true;
+                currentlyHeldBall = this;
                 rb.isKinematic = true;
                 rb.useGravity = false;
                 initialScreenTouchPos = screenTouchPos;
@@ -86,5 +91,6 @@ public class BallThrower : MonoBehaviour
         rb.AddTorque(spinDirection * spinMultiplier, ForceMode.Impulse);
 
         isHolding = false;
+        currentlyHeldBall = null;
     }
 }
