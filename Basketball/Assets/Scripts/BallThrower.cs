@@ -15,8 +15,9 @@ public class BallThrower : MonoBehaviour
     [Header("Throw Settings")]
     public float throwForceMultiplier = 100f;
     public float maxForce = 100f;
-    public float dragPlaneZ = 30f;
     public float forwardZ = 100f;
+
+    public float spinMultiplier = 10f;
 
     void Start()
     {
@@ -80,6 +81,9 @@ public class BallThrower : MonoBehaviour
         rb.isKinematic = false;
         rb.useGravity = true;
         rb.AddForce(force, ForceMode.Impulse);
+
+        Vector3 spinDirection = new Vector3(-dragVector.y, dragVector.x, 0f).normalized;
+        rb.AddTorque(spinDirection * spinMultiplier, ForceMode.Impulse);
 
         isHolding = false;
     }
