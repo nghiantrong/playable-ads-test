@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
     public Text currentScoreText;
     private int currentScore = 0;
     public Text highScoreText;
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         UpdateUI();
     }

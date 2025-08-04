@@ -38,7 +38,8 @@ public class RecordDunkTrigger : MonoBehaviour
 
         if (state.dunkTriggerTop && state.dunkTriggerBottom)
         {
-            GameManager.instance.UpdateScore();
+            GameManager.Instance.UpdateScore();
+            AudioManager.Instance.PlayBasketPerfectSound();
             ballStates.Remove(ball);
         }
     }

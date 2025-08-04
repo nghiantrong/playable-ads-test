@@ -90,6 +90,8 @@ public class BallThrower : MonoBehaviour
         Vector3 spinDirection = new Vector3(-dragVector.y, dragVector.x, 0f).normalized;
         rb.AddTorque(spinDirection * spinMultiplier, ForceMode.Impulse);
 
+        AudioManager.Instance.PlayThrowBallSound();
+
         isHolding = false;
         currentlyHeldBall = null;
     }
