@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraController : MonoBehaviour
+{
+    public GameObject camera1;
+    public GameObject camera2;
+    public GameObject mainCanvas;
+    public GameObject selectionCanvas;
+    public GameObject ballSelection;
+
+    void Update()
+    {
+        //Testing
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SwitchToCamera1();
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            SwitchToCamera2();
+        }
+    }
+
+    public void SwitchToCamera1()
+    {
+        Debug.Log("Switching to camera 1");
+        camera1.SetActive(true);
+        camera2.SetActive(false);
+        mainCanvas.SetActive(true);
+        selectionCanvas.SetActive(false);
+        ballSelection.SetActive(false);
+    }
+
+    public void SwitchToCamera2()
+    {
+        Debug.Log("Switching to camera 2");
+        camera1.SetActive(false);
+        camera2.SetActive(true);
+        mainCanvas.SetActive(false);
+        selectionCanvas.SetActive(true);
+        ballSelection.SetActive(true);
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "ignores": [],
+  "groups": [
+    [
+      "H:/Unity Projects/playable-ads-test/Basketball/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager.cs",
+      "H:/Unity Projects/playable-ads-test/Basketball/LunaTemp/stage3/processed-scripts/Assets/Scripts/BallThrower.cs",
+      "H:/Unity Projects/playable-ads-test/Basketball/LunaTemp/stage3/processed-scripts/Assets/Scripts/InputHelper.cs",
+      "H:/Unity Projects/playable-ads-test/Basketball/LunaTemp/stage3/processed-scripts/Assets/Scripts/BallSelectionController.cs",
+      "H:/Unity Projects/playable-ads-test/Basketball/LunaTemp/stage3/processed-scripts/Assets/Scripts/CameraController.cs",
+      "H:/Unity Projects/playable-ads-test/Basketball/LunaTemp/stage3/processed-scripts/Assets/Scripts/CollisionHandler.cs",
+      "H:/Unity Projects/playable-ads-test/Basketball/LunaTemp/stage3/processed-scripts/Assets/Scripts/RecordDunkTrigger.cs",
+      "H:/Unity Projects/playable-ads-test/Basketball/LunaTemp/stage3/processed-scripts/Assets/Scripts/DunkTrigger.cs",
+      "H:/Unity Projects/playable-ads-test/Basketball/LunaTemp/stage3/processed-scripts/Assets/Scripts/GameManager.cs"
+    ],
+    [
+      "C:/Users/PC/Downloads/6.3.0/pipeline/templates/LunaCompiler/Scripts/Properties/AssemblyInfo.cs"
+    ],
+    [
+      "C:/Users/PC/Downloads/6.3.0/pipeline/templates/LunaCompiler/Scripts/Sources/OtherDummyScript.cs"
+    ],
+    [
+      "C:/Users/PC/Downloads/6.3.0/pipeline/templates/LunaCompiler/Scripts/obj/Debug/.NETFramework,Version=v4.7.AssemblyAttributes.cs"
+    ]
+  ]
+}
