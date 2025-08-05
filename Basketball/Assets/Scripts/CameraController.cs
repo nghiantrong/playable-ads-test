@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     public GameObject camera2;
     public GameObject mainCanvas;
     public GameObject selectionCanvas;
+    public GameObject ballSelection;
 
     void Update()
     {
@@ -29,6 +30,7 @@ public class CameraController : MonoBehaviour
         camera2.SetActive(false);
         mainCanvas.SetActive(true);
         selectionCanvas.SetActive(false);
+        ballSelection.SetActive(false);
     }
 
     public void SwitchToCamera2()
@@ -38,5 +40,6 @@ public class CameraController : MonoBehaviour
         camera2.SetActive(true);
         mainCanvas.SetActive(false);
         selectionCanvas.SetActive(true);
+        ballSelection.SetActive(true);
     }
 }
