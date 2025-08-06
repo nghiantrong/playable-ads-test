@@ -76,9 +76,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForceMultiplier: 80
-  maxForce: 90
-  forwardZ: 75
+  throwForceMultiplier: 290
+  maxForce: 290
+  forwardZ: 120
+  verticalBoost: 1
   spinMultiplier: 30
 --- !u!1 &127803947
 GameObject:
@@ -274,9 +275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForceMultiplier: 80
-  maxForce: 90
-  forwardZ: 75
+  throwForceMultiplier: 290
+  maxForce: 290
+  forwardZ: 120
+  verticalBoost: 1
   spinMultiplier: 30
 --- !u!1 &446835321
 GameObject:
@@ -1990,9 +1992,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForceMultiplier: 80
-  maxForce: 90
-  forwardZ: 75
+  throwForceMultiplier: 290
+  maxForce: 290
+  forwardZ: 120
+  verticalBoost: 1
   spinMultiplier: 30
 --- !u!1 &1816597297
 GameObject:
@@ -3099,7 +3102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2878013518701920586
 GameObject:
   m_ObjectHideFlags: 0
@@ -3498,7 +3501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2878013518701920742
 GameObject:
   m_ObjectHideFlags: 0
@@ -3554,7 +3557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2878013518701920749
 GameObject:
   m_ObjectHideFlags: 0
@@ -3673,13 +3676,13 @@ GameObject:
   - component: {fileID: 2878013518752252601}
   - component: {fileID: 2878013522007032701}
   - component: {fileID: 2878013522023809950}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: FlowerLights
   m_TagString: 
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2878013518701920788
 GameObject:
   m_ObjectHideFlags: 0
@@ -5500,7 +5503,7 @@ Camera:
   m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 5909
+    m_Bits: 5911
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -9075,7 +9078,7 @@ Light:
   m_RenderMode: 2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2305
+    m_Bits: 2307
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -9373,9 +9376,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForceMultiplier: 80
-  maxForce: 90
-  forwardZ: 75
+  throwForceMultiplier: 290
+  maxForce: 290
+  forwardZ: 120
+  verticalBoost: 1
   spinMultiplier: 30
 --- !u!114 &2878013520950068055
 MonoBehaviour:
@@ -9389,9 +9393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForceMultiplier: 80
-  maxForce: 90
-  forwardZ: 75
+  throwForceMultiplier: 290
+  maxForce: 290
+  forwardZ: 120
+  verticalBoost: 1
   spinMultiplier: 30
 --- !u!136 &2878013520966845270
 CapsuleCollider:
@@ -27816,14 +27821,14 @@ ParticleSystem:
   lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
   looping: 1
   prewarm: 0
   playOnAwake: 0
-  useUnscaledTime: 1
+  useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
@@ -27844,7 +27849,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 0
+  scalingMode: 1
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -32241,14 +32246,14 @@ ParticleSystem:
   lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
   looping: 1
   prewarm: 0
   playOnAwake: 1
-  useUnscaledTime: 1
+  useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
@@ -32267,9 +32272,9 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 0
+  scalingMode: 1
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -32935,7 +32940,7 @@ ParticleSystem:
     enabled: 0
     x:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -32952,7 +32957,7 @@ ParticleSystem:
         m_RotationOrder: 4
     y:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -32969,7 +32974,7 @@ ParticleSystem:
         m_RotationOrder: 4
     z:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -33120,7 +33125,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    inWorldSpace: 0
+    inWorldSpace: 1
   InheritVelocityModule:
     enabled: 0
     m_Mode: 0
@@ -34438,14 +34443,14 @@ ParticleSystem:
   lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
   looping: 1
   prewarm: 0
   playOnAwake: 1
-  useUnscaledTime: 1
+  useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
@@ -34466,7 +34471,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 0
+  scalingMode: 1
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -36635,14 +36640,14 @@ ParticleSystem:
   lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
   looping: 1
   prewarm: 0
   playOnAwake: 1
-  useUnscaledTime: 1
+  useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
@@ -36663,7 +36668,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 0
+  scalingMode: 1
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -41092,14 +41097,14 @@ ParticleSystem:
   lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 1
+  cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
   looping: 1
   prewarm: 0
   playOnAwake: 1
-  useUnscaledTime: 1
+  useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
@@ -41120,7 +41125,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 0
+  scalingMode: 1
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -52422,7 +52427,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 600200fb42c4b0d600000000000000d2, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -53163,7 +53167,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 651745fb42c1a59300000000000000e4, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -53312,7 +53315,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 651745fb42c1a59300000000000000e4, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -53387,7 +53389,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 600200fb42c4b0d600000000000000d2, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

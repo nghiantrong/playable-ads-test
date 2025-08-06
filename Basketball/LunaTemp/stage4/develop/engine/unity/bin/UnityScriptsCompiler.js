@@ -1,6 +1,6 @@
 if ( TRACE ) { TRACE( JSON.parse( '["AudioManager#Awake","AudioManager#Start","AudioManager#PlayBasketPerfectSound","AudioManager#PlayButtonSound","AudioManager#PlayBallCollision","AudioManager#PlayThrowBallSound","AudioManager#PlayMusic","BallSelectionController#init","BallSelectionController#Start","BallSelectionController#Update","BallSelectionController#SnapToRing","BallSelectionController#GetNearestSnapAngle","BallSelectionController#SelectBall","BallSelectionController#Back","BallThrower#init","BallThrower#Start","BallThrower#Update","BallThrower#TryPickUpThisBall","BallThrower#HoldToPosition","BallThrower#ReleaseAndThrow","CameraController#Update","CameraController#SwitchToCamera1","CameraController#SwitchToCamera2","CollisionHandler#init","CollisionHandler#OnCollisionEnter","DunkTrigger#Start","DunkTrigger#OnTriggerExit","GameManager#init","GameManager#Awake","GameManager#UpdateScore","GameManager#UpdateUI","GameManager#AppearText","InputHelper#IsTouchBegin","InputHelper#IsTouching","InputHelper#IsTouchEnd","InputHelper#GetTouchPosition","RecordDunkTrigger#init","RecordDunkTrigger#NotifyDunkTrigger","RecordDunkTrigger.BallState#init"]' ) ); }
 /**
- * @version 1.0.9348.39123
+ * @version 1.0.9349.39661
  * @copyright anton
  * @compiler Bridge.NET 17.9.42-luna
  */
@@ -329,6 +329,7 @@ if ( TRACE ) { TRACE( "BallSelectionController#Back", this ); }
             throwForceMultiplier: 0,
             maxForce: 0,
             forwardZ: 0,
+            verticalBoost: 0,
             spinMultiplier: 0
         },
         ctors: {
@@ -338,9 +339,10 @@ if ( TRACE ) { TRACE( "BallThrower#init", this ); }
                 this.initialScreenTouchPos = new UnityEngine.Vector3();
                 this.currentScreenTouchPos = new UnityEngine.Vector3();
                 this.isHolding = false;
-                this.throwForceMultiplier = 80.0;
-                this.maxForce = 90.0;
-                this.forwardZ = 75.0;
+                this.throwForceMultiplier = 290.0;
+                this.maxForce = 290.0;
+                this.forwardZ = 120.0;
+                this.verticalBoost = 1.0;
                 this.spinMultiplier = 30.0;
             }
         },
@@ -423,8 +425,10 @@ if ( TRACE ) { TRACE( "BallThrower#ReleaseAndThrow", this ); }
 
                 var dragVector = releaseTouchPos.$clone().sub( this.initialScreenTouchPos );
 
-                var throwDir = new pc.Vec3( 1.0, dragVector.y, this.forwardZ );
-                var force = this.cam.transform.TransformDirection$1(throwDir.clone().normalize().$clone()).clone().scale( (dragVector.length() / 100.0) ).clone().scale( this.throwForceMultiplier );
+                var dragFactor = dragVector.length() / UnityEngine.Screen.height;
+
+                var throwDir = new pc.Vec3( 1.0, dragVector.y * this.verticalBoost, this.forwardZ );
+                var force = this.cam.transform.TransformDirection$1(throwDir.clone().normalize().$clone()).clone().scale( dragFactor ).clone().scale( this.throwForceMultiplier );
                 force = pc.Vec3.clampMagnitude( force, this.maxForce );
 
                 this.rb.isKinematic = false;
@@ -801,7 +805,7 @@ if ( TRACE ) { TRACE( "RecordDunkTrigger.BallState#init", this ); }
     /*BallSelectionController end.*/
 
     /*BallThrower start.*/
-    $m("BallThrower", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"HoldToPosition","t":8,"pi":[{"n":"screenTouchPos","pt":$n[1].Vector3,"ps":0}],"sn":"HoldToPosition","rt":$n[0].Void,"p":[$n[1].Vector3]},{"a":1,"n":"ReleaseAndThrow","t":8,"pi":[{"n":"releaseTouchPos","pt":$n[1].Vector3,"ps":0}],"sn":"ReleaseAndThrow","rt":$n[0].Void,"p":[$n[1].Vector3]},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":1,"n":"TryPickUpThisBall","t":8,"pi":[{"n":"screenTouchPos","pt":$n[1].Vector3,"ps":0}],"sn":"TryPickUpThisBall","rt":$n[0].Void,"p":[$n[1].Vector3]},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":1,"n":"cam","t":4,"rt":$n[1].Camera,"sn":"cam"},{"a":1,"n":"currentScreenTouchPos","t":4,"rt":$n[1].Vector3,"sn":"currentScreenTouchPos"},{"a":1,"n":"currentlyHeldBall","is":true,"t":4,"rt":BallThrower,"sn":"currentlyHeldBall"},{"a":2,"n":"forwardZ","t":4,"rt":$n[0].Single,"sn":"forwardZ","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"initialScreenTouchPos","t":4,"rt":$n[1].Vector3,"sn":"initialScreenTouchPos"},{"a":1,"n":"isHolding","t":4,"rt":$n[0].Boolean,"sn":"isHolding","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"maxForce","t":4,"rt":$n[0].Single,"sn":"maxForce","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"rb","t":4,"rt":$n[1].Rigidbody,"sn":"rb"},{"a":2,"n":"spinMultiplier","t":4,"rt":$n[0].Single,"sn":"spinMultiplier","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.HeaderAttribute("Throw Settings")],"a":2,"n":"throwForceMultiplier","t":4,"rt":$n[0].Single,"sn":"throwForceMultiplier","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
+    $m("BallThrower", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"HoldToPosition","t":8,"pi":[{"n":"screenTouchPos","pt":$n[1].Vector3,"ps":0}],"sn":"HoldToPosition","rt":$n[0].Void,"p":[$n[1].Vector3]},{"a":1,"n":"ReleaseAndThrow","t":8,"pi":[{"n":"releaseTouchPos","pt":$n[1].Vector3,"ps":0}],"sn":"ReleaseAndThrow","rt":$n[0].Void,"p":[$n[1].Vector3]},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":1,"n":"TryPickUpThisBall","t":8,"pi":[{"n":"screenTouchPos","pt":$n[1].Vector3,"ps":0}],"sn":"TryPickUpThisBall","rt":$n[0].Void,"p":[$n[1].Vector3]},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":1,"n":"cam","t":4,"rt":$n[1].Camera,"sn":"cam"},{"a":1,"n":"currentScreenTouchPos","t":4,"rt":$n[1].Vector3,"sn":"currentScreenTouchPos"},{"a":1,"n":"currentlyHeldBall","is":true,"t":4,"rt":BallThrower,"sn":"currentlyHeldBall"},{"a":2,"n":"forwardZ","t":4,"rt":$n[0].Single,"sn":"forwardZ","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"initialScreenTouchPos","t":4,"rt":$n[1].Vector3,"sn":"initialScreenTouchPos"},{"a":1,"n":"isHolding","t":4,"rt":$n[0].Boolean,"sn":"isHolding","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"maxForce","t":4,"rt":$n[0].Single,"sn":"maxForce","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"rb","t":4,"rt":$n[1].Rigidbody,"sn":"rb"},{"a":2,"n":"spinMultiplier","t":4,"rt":$n[0].Single,"sn":"spinMultiplier","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.HeaderAttribute("Throw Settings")],"a":2,"n":"throwForceMultiplier","t":4,"rt":$n[0].Single,"sn":"throwForceMultiplier","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"verticalBoost","t":4,"rt":$n[0].Single,"sn":"verticalBoost","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
     /*BallThrower end.*/
 
     /*CameraController start.*/

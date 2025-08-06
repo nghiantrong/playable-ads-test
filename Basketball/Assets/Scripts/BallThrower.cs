@@ -15,9 +15,10 @@ public class BallThrower : MonoBehaviour
     private Vector3 currentScreenTouchPos;
 
     [Header("Throw Settings")]
-    public float throwForceMultiplier = 80f;
-    public float maxForce = 90f;
-    public float forwardZ = 75f;
+    public float throwForceMultiplier = 290f;
+    public float maxForce = 290f;
+    public float forwardZ = 120f;
+    public float verticalBoost = 1f;
 
     public float spinMultiplier = 30f;
 
@@ -79,8 +80,10 @@ public class BallThrower : MonoBehaviour
     {
         Vector3 dragVector = releaseTouchPos - initialScreenTouchPos;
 
-        Vector3 throwDir = new Vector3(1f, dragVector.y, forwardZ);
-        Vector3 force = cam.transform.TransformDirection(throwDir.normalized) * (dragVector.magnitude / 100f) * throwForceMultiplier;
+        float dragFactor = dragVector.magnitude / Screen.height;
+
+        Vector3 throwDir = new Vector3(1f, dragVector.y * verticalBoost, forwardZ);
+        Vector3 force = cam.transform.TransformDirection(throwDir.normalized) * dragFactor * throwForceMultiplier;
         force = Vector3.ClampMagnitude(force, maxForce);
 
         rb.isKinematic = false;

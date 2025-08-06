@@ -8712,7 +8712,7 @@
                     },
                     {
                         "name": "tryParseInt",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "parseIntStyles",
@@ -27560,7 +27560,7 @@
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
