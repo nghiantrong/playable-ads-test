@@ -160,7 +160,7 @@
         "minify": true,
         "forceUncompressed": false,
         "forceBase64": false,
-        "graphicsConstraint": 24,
+        "graphicsConstraint": 28,
         "genericCheck": true,
         "disableAntiAliasing": true,
         "forceStableRandomSeed": false,
@@ -187,8 +187,8 @@
             },
             {
                 "name": "prefabs",
-                "excluded": true,
-                "forceIncluded": false
+                "excluded": false,
+                "forceIncluded": true
             },
             {
                 "name": "mecanim-wasm",

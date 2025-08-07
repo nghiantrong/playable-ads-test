@@ -1,6 +1,6 @@
 if ( TRACE ) { TRACE( JSON.parse( '["AudioManager#Awake","AudioManager#Start","AudioManager#PlayBasketPerfectSound","AudioManager#PlayButtonSound","AudioManager#PlayBallCollision","AudioManager#PlayThrowBallSound","AudioManager#PlayMusic","BallSelectionController#init","BallSelectionController#Start","BallSelectionController#Update","BallSelectionController#SnapToRing","BallSelectionController#GetNearestSnapAngle","BallSelectionController#SelectBall","BallSelectionController#Back","BallThrower#init","BallThrower#Start","BallThrower#Update","BallThrower#TryPickUpThisBall","BallThrower#HoldToPosition","BallThrower#ReleaseAndThrow","CameraController#Update","CameraController#SwitchToCamera1","CameraController#SwitchToCamera2","CollisionHandler#init","CollisionHandler#OnCollisionEnter","DunkTrigger#Start","DunkTrigger#OnTriggerExit","GameManager#init","GameManager#Awake","GameManager#UpdateScore","GameManager#UpdateUI","GameManager#AppearText","InputHelper#IsTouchBegin","InputHelper#IsTouching","InputHelper#IsTouchEnd","InputHelper#GetTouchPosition","RecordDunkTrigger#init","RecordDunkTrigger#NotifyDunkTrigger","RecordDunkTrigger.BallState#init"]' ) ); }
 /**
- * @version 1.0.9349.39661
+ * @version 1.0.9350.26369
  * @copyright anton
  * @compiler Bridge.NET 17.9.42-luna
  */
