@@ -16504,7 +16504,7 @@
                     },
                     {
                         "name": "eulerAngles#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "eulerAngles#set",
@@ -24252,7 +24252,7 @@
                     },
                     {
                         "name": "IsRebuildingLayout",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "IsRebuildingGraphics",
@@ -26054,6 +26054,22 @@
                     },
                     {
                         "name": "Back",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "BallSelectionScroll",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SpinForeverAnim",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SpinAnimation",
                         "excluded": false
                     }
                 ]

@@ -15,6 +15,9 @@ public class BallSelectionController : MonoBehaviour
     public float snapDuration = 0.2f;
     private Coroutine snapToRingCoroutine;
     private int currentBallIndex = 0;
+
+    public float spinAnimDuration = 0.65f;
+
     public GameObject[] selectionBalls;
     public GameObject[] balls;
 
@@ -26,7 +29,17 @@ public class BallSelectionController : MonoBehaviour
         cameraController = FindObjectOfType<CameraController>();
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine(SpinAnimation());
+    }
+
     private void Update()
+    {
+        BallSelectionScroll();
+    }
+
+    private void BallSelectionScroll()
     {
         if (IsTouchBegin())
         {
@@ -57,7 +70,45 @@ public class BallSelectionController : MonoBehaviour
             ballSelectionRing.SetActive(true);
 
             snapToRingCoroutine = StartCoroutine(SnapToRing());
+            StartCoroutine(SpinForeverAnim());
         }
+    }
+
+    private IEnumerator SpinForeverAnim()
+    {
+        while (true)
+        {
+            GameObject selectedBall = selectionBalls[currentBallIndex];
+            selectedBall.transform.Rotate((60f * Time.deltaTime), -(60f * Time.deltaTime), 0);
+            yield return null;
+        }
+    }
+
+    private IEnumerator SpinAnimation()
+    {
+        if (snapToRingCoroutine != null)
+        {
+            StopCoroutine(snapToRingCoroutine);
+            snapToRingCoroutine = null;
+        }
+
+        float startY = transform.eulerAngles.y;
+        float endY = startY + 360f;
+
+        float elapsed = 0f;
+
+        while (elapsed < spinAnimDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / spinAnimDuration);
+
+            float currentY = Mathf.Lerp(startY, endY, t);
+            transform.rotation = Quaternion.Euler(0f, currentY, 0f);
+
+            yield return null;
+        }
+
+        transform.rotation = Quaternion.Euler(0f, endY, 0f);
     }
 
     private IEnumerator SnapToRing()

@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForceMultiplier: 290
-  maxForce: 290
+  throwForceMultiplier: 255
+  maxForce: 255
   forwardZ: 120
   verticalBoost: 1
   spinMultiplier: 30
@@ -275,8 +275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForceMultiplier: 290
-  maxForce: 290
+  throwForceMultiplier: 255
+  maxForce: 255
   forwardZ: 120
   verticalBoost: 1
   spinMultiplier: 30
@@ -350,7 +350,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 0:00
 --- !u!222 &446835324
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1696,6 +1696,7 @@ MonoBehaviour:
   rotationSpeed: 0.7
   ballSelectionRing: {fileID: 605388797}
   snapDuration: 0.2
+  spinAnimDuration: 0.65
   selectionBalls:
   - {fileID: 2878013518701920616}
   - {fileID: 2878013518701920830}
@@ -1992,8 +1993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForceMultiplier: 290
-  maxForce: 290
+  throwForceMultiplier: 255
+  maxForce: 255
   forwardZ: 120
   verticalBoost: 1
   spinMultiplier: 30
@@ -9376,8 +9377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForceMultiplier: 290
-  maxForce: 290
+  throwForceMultiplier: 255
+  maxForce: 255
   forwardZ: 120
   verticalBoost: 1
   spinMultiplier: 30
@@ -9393,8 +9394,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751e59c0676b6e9458befb1920db9709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForceMultiplier: 290
-  maxForce: 290
+  throwForceMultiplier: 255
+  maxForce: 255
   forwardZ: 120
   verticalBoost: 1
   spinMultiplier: 30

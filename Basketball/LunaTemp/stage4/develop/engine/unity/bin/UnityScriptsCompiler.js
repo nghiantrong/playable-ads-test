@@ -1,6 +1,6 @@
-if ( TRACE ) { TRACE( JSON.parse( '["AudioManager#Awake","AudioManager#Start","AudioManager#PlayBasketPerfectSound","AudioManager#PlayButtonSound","AudioManager#PlayBallCollision","AudioManager#PlayThrowBallSound","AudioManager#PlayMusic","BallSelectionController#init","BallSelectionController#Start","BallSelectionController#Update","BallSelectionController#SnapToRing","BallSelectionController#GetNearestSnapAngle","BallSelectionController#SelectBall","BallSelectionController#Back","BallThrower#init","BallThrower#Start","BallThrower#Update","BallThrower#TryPickUpThisBall","BallThrower#HoldToPosition","BallThrower#ReleaseAndThrow","CameraController#Update","CameraController#SwitchToCamera1","CameraController#SwitchToCamera2","CollisionHandler#init","CollisionHandler#OnCollisionEnter","DunkTrigger#Start","DunkTrigger#OnTriggerExit","GameManager#init","GameManager#Awake","GameManager#UpdateScore","GameManager#UpdateUI","GameManager#AppearText","InputHelper#IsTouchBegin","InputHelper#IsTouching","InputHelper#IsTouchEnd","InputHelper#GetTouchPosition","RecordDunkTrigger#init","RecordDunkTrigger#NotifyDunkTrigger","RecordDunkTrigger.BallState#init"]' ) ); }
+if ( TRACE ) { TRACE( JSON.parse( '["AudioManager#Awake","AudioManager#Start","AudioManager#PlayBasketPerfectSound","AudioManager#PlayButtonSound","AudioManager#PlayBallCollision","AudioManager#PlayThrowBallSound","AudioManager#PlayMusic","BallSelectionController#init","BallSelectionController#Start","BallSelectionController#OnEnable","BallSelectionController#Update","BallSelectionController#BallSelectionScroll","BallSelectionController#SpinForeverAnim","BallSelectionController#SpinAnimation","BallSelectionController#SnapToRing","BallSelectionController#GetNearestSnapAngle","BallSelectionController#SelectBall","BallSelectionController#Back","BallThrower#init","BallThrower#Start","BallThrower#Update","BallThrower#TryPickUpThisBall","BallThrower#HoldToPosition","BallThrower#ReleaseAndThrow","CameraController#Update","CameraController#SwitchToCamera1","CameraController#SwitchToCamera2","CollisionHandler#init","CollisionHandler#OnCollisionEnter","DunkTrigger#Start","DunkTrigger#OnTriggerExit","GameManager#init","GameManager#Awake","GameManager#UpdateScore","GameManager#UpdateUI","GameManager#AppearText","InputHelper#IsTouchBegin","InputHelper#IsTouching","InputHelper#IsTouchEnd","InputHelper#GetTouchPosition","RecordDunkTrigger#init","RecordDunkTrigger#NotifyDunkTrigger","RecordDunkTrigger.BallState#init"]' ) ); }
 /**
- * @version 1.0.9350.26369
+ * @version 1.0.9351.35678
  * @copyright anton
  * @compiler Bridge.NET 17.9.42-luna
  */
@@ -110,6 +110,7 @@ if ( TRACE ) { TRACE( "AudioManager#PlayMusic", this ); }
             snapDuration: 0,
             snapToRingCoroutine: null,
             currentBallIndex: 0,
+            spinAnimDuration: 0,
             selectionBalls: null,
             balls: null,
             cameraController: null
@@ -124,6 +125,7 @@ if ( TRACE ) { TRACE( "BallSelectionController#init", this ); }
                 this.rotationSpeed = 0.5;
                 this.snapDuration = 0.2;
                 this.currentBallIndex = 0;
+                this.spinAnimDuration = 0.65;
             }
         },
         methods: {
@@ -135,9 +137,25 @@ if ( TRACE ) { TRACE( "BallSelectionController#Start", this ); }
             },
             /*BallSelectionController.Start end.*/
 
+            /*BallSelectionController.OnEnable start.*/
+            OnEnable: function () {
+if ( TRACE ) { TRACE( "BallSelectionController#OnEnable", this ); }
+
+                this.StartCoroutine$1(this.SpinAnimation());
+            },
+            /*BallSelectionController.OnEnable end.*/
+
             /*BallSelectionController.Update start.*/
             Update: function () {
 if ( TRACE ) { TRACE( "BallSelectionController#Update", this ); }
+
+                this.BallSelectionScroll();
+            },
+            /*BallSelectionController.Update end.*/
+
+            /*BallSelectionController.BallSelectionScroll start.*/
+            BallSelectionScroll: function () {
+if ( TRACE ) { TRACE( "BallSelectionController#BallSelectionScroll", this ); }
 
                 if (InputHelper.IsTouchBegin()) {
                     this.isHolding = true;
@@ -164,9 +182,134 @@ if ( TRACE ) { TRACE( "BallSelectionController#Update", this ); }
                     this.ballSelectionRing.SetActive(true);
 
                     this.snapToRingCoroutine = this.StartCoroutine$1(this.SnapToRing());
+                    this.StartCoroutine$1(this.SpinForeverAnim());
                 }
             },
-            /*BallSelectionController.Update end.*/
+            /*BallSelectionController.BallSelectionScroll end.*/
+
+            /*BallSelectionController.SpinForeverAnim start.*/
+            SpinForeverAnim: function () {
+if ( TRACE ) { TRACE( "BallSelectionController#SpinForeverAnim", this ); }
+
+                var $step = 0,
+                    $jumpFromFinally,
+                    $returnValue,
+                    selectedBall,
+                    $async_e;
+
+                var $enumerator = new Bridge.GeneratorEnumerator(Bridge.fn.bind(this, function () {
+                    try {
+                        for (;;) {
+                            switch ($step) {
+                                case 0: {
+                                    if ( true ) {
+                                            $step = 1;
+                                            continue;
+                                        } 
+                                        $step = 3;
+                                        continue;
+                                }
+                                case 1: {
+                                    selectedBall = this.selectionBalls[this.currentBallIndex];
+                                        selectedBall.transform.Rotate((60.0 * UnityEngine.Time.deltaTime), -(60.0 * UnityEngine.Time.deltaTime), 0);
+                                        $enumerator.current = null;
+                                        $step = 2;
+                                        return true;
+                                }
+                                case 2: {
+                                    
+                                        $step = 0;
+                                        continue;
+                                }
+                                case 3: {
+
+                                }
+                                default: {
+                                    return false;
+                                }
+                            }
+                        }
+                    } catch($async_e1) {
+                        $async_e = System.Exception.create($async_e1);
+                        throw $async_e;
+                    }
+                }));
+                return $enumerator;
+            },
+            /*BallSelectionController.SpinForeverAnim end.*/
+
+            /*BallSelectionController.SpinAnimation start.*/
+            SpinAnimation: function () {
+if ( TRACE ) { TRACE( "BallSelectionController#SpinAnimation", this ); }
+
+                var $step = 0,
+                    $jumpFromFinally,
+                    $returnValue,
+                    startY,
+                    endY,
+                    elapsed,
+                    t,
+                    currentY,
+                    $async_e;
+
+                var $enumerator = new Bridge.GeneratorEnumerator(Bridge.fn.bind(this, function () {
+                    try {
+                        for (;;) {
+                            switch ($step) {
+                                case 0: {
+                                    if (this.snapToRingCoroutine != null) {
+                                            this.StopCoroutine$2(this.snapToRingCoroutine);
+                                            this.snapToRingCoroutine = null;
+                                        }
+
+                                        startY = this.transform.eulerAngles.y;
+                                        endY = startY + 360.0;
+
+                                        elapsed = 0.0;
+                                    $step = 1;
+                                    continue;
+                                }
+                                case 1: {
+                                    if ( elapsed < this.spinAnimDuration ) {
+                                            $step = 2;
+                                            continue;
+                                        } 
+                                        $step = 4;
+                                        continue;
+                                }
+                                case 2: {
+                                    elapsed += UnityEngine.Time.deltaTime;
+                                        t = Math.max(0, Math.min(1, elapsed / this.spinAnimDuration));
+
+                                        currentY = pc.math.lerp(startY, endY, t);
+                                        this.transform.rotation = new pc.Quat().setFromEulerAngles_Unity( 0.0, currentY, 0.0 );
+
+                                        $enumerator.current = null;
+                                        $step = 3;
+                                        return true;
+                                }
+                                case 3: {
+                                    
+                                        $step = 1;
+                                        continue;
+                                }
+                                case 4: {
+                                    this.transform.rotation = new pc.Quat().setFromEulerAngles_Unity( 0.0, endY, 0.0 );
+
+                                }
+                                default: {
+                                    return false;
+                                }
+                            }
+                        }
+                    } catch($async_e1) {
+                        $async_e = System.Exception.create($async_e1);
+                        throw $async_e;
+                    }
+                }));
+                return $enumerator;
+            },
+            /*BallSelectionController.SpinAnimation end.*/
 
             /*BallSelectionController.SnapToRing start.*/
             SnapToRing: function () {
@@ -801,7 +944,7 @@ if ( TRACE ) { TRACE( "RecordDunkTrigger.BallState#init", this ); }
     /*AudioManager end.*/
 
     /*BallSelectionController start.*/
-    $m("BallSelectionController", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Back","t":8,"sn":"Back","rt":$n[0].Void},{"a":1,"n":"GetNearestSnapAngle","t":8,"pi":[{"n":"currentY","pt":$n[0].Single,"ps":0}],"sn":"GetNearestSnapAngle","rt":$n[0].Single,"p":[$n[0].Single],"box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"SelectBall","t":8,"sn":"SelectBall","rt":$n[0].Void},{"a":1,"n":"SnapToRing","t":8,"sn":"SnapToRing","rt":$n[2].IEnumerator},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":2,"n":"ballSelectionRing","t":4,"rt":$n[1].GameObject,"sn":"ballSelectionRing"},{"a":2,"n":"balls","t":4,"rt":System.Array.type(UnityEngine.GameObject),"sn":"balls"},{"a":1,"n":"cameraController","t":4,"rt":CameraController,"sn":"cameraController"},{"a":1,"n":"currentBallIndex","t":4,"rt":$n[0].Int32,"sn":"currentBallIndex","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"currentTouchPos","t":4,"rt":$n[1].Vector3,"sn":"currentTouchPos"},{"a":1,"n":"isHolding","t":4,"rt":$n[0].Boolean,"sn":"isHolding","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"previousTouchPos","t":4,"rt":$n[1].Vector3,"sn":"previousTouchPos"},{"a":2,"n":"rotationSpeed","t":4,"rt":$n[0].Single,"sn":"rotationSpeed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"selectionBalls","t":4,"rt":System.Array.type(UnityEngine.GameObject),"sn":"selectionBalls"},{"a":2,"n":"snapDuration","t":4,"rt":$n[0].Single,"sn":"snapDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"snapToRingCoroutine","t":4,"rt":$n[1].Coroutine,"sn":"snapToRingCoroutine"}]}; }, $n);
+    $m("BallSelectionController", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Back","t":8,"sn":"Back","rt":$n[0].Void},{"a":1,"n":"BallSelectionScroll","t":8,"sn":"BallSelectionScroll","rt":$n[0].Void},{"a":1,"n":"GetNearestSnapAngle","t":8,"pi":[{"n":"currentY","pt":$n[0].Single,"ps":0}],"sn":"GetNearestSnapAngle","rt":$n[0].Single,"p":[$n[0].Single],"box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"OnEnable","t":8,"sn":"OnEnable","rt":$n[0].Void},{"a":2,"n":"SelectBall","t":8,"sn":"SelectBall","rt":$n[0].Void},{"a":1,"n":"SnapToRing","t":8,"sn":"SnapToRing","rt":$n[2].IEnumerator},{"a":1,"n":"SpinAnimation","t":8,"sn":"SpinAnimation","rt":$n[2].IEnumerator},{"a":1,"n":"SpinForeverAnim","t":8,"sn":"SpinForeverAnim","rt":$n[2].IEnumerator},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":2,"n":"ballSelectionRing","t":4,"rt":$n[1].GameObject,"sn":"ballSelectionRing"},{"a":2,"n":"balls","t":4,"rt":System.Array.type(UnityEngine.GameObject),"sn":"balls"},{"a":1,"n":"cameraController","t":4,"rt":CameraController,"sn":"cameraController"},{"a":1,"n":"currentBallIndex","t":4,"rt":$n[0].Int32,"sn":"currentBallIndex","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"currentTouchPos","t":4,"rt":$n[1].Vector3,"sn":"currentTouchPos"},{"a":1,"n":"isHolding","t":4,"rt":$n[0].Boolean,"sn":"isHolding","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"previousTouchPos","t":4,"rt":$n[1].Vector3,"sn":"previousTouchPos"},{"a":2,"n":"rotationSpeed","t":4,"rt":$n[0].Single,"sn":"rotationSpeed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"selectionBalls","t":4,"rt":System.Array.type(UnityEngine.GameObject),"sn":"selectionBalls"},{"a":2,"n":"snapDuration","t":4,"rt":$n[0].Single,"sn":"snapDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"snapToRingCoroutine","t":4,"rt":$n[1].Coroutine,"sn":"snapToRingCoroutine"},{"a":2,"n":"spinAnimDuration","t":4,"rt":$n[0].Single,"sn":"spinAnimDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
     /*BallSelectionController end.*/
 
     /*BallThrower start.*/

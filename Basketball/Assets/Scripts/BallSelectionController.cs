@@ -70,6 +70,17 @@ public class BallSelectionController : MonoBehaviour
             ballSelectionRing.SetActive(true);
 
             snapToRingCoroutine = StartCoroutine(SnapToRing());
+            StartCoroutine(SpinForeverAnim());
+        }
+    }
+
+    private IEnumerator SpinForeverAnim()
+    {
+        while (true)
+        {
+            GameObject selectedBall = selectionBalls[currentBallIndex];
+            selectedBall.transform.Rotate((60f * Time.deltaTime), -(60f * Time.deltaTime), 0);
+            yield return null;
         }
     }
 

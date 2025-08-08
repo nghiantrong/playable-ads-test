@@ -993,13 +993,14 @@ Deserializers["BallSelectionController"] = function (request, data, root) {
   i726.rotationSpeed = i727[0]
   request.r(i727[1], i727[2], 0, i726, 'ballSelectionRing')
   i726.snapDuration = i727[3]
-  var i729 = i727[4]
+  i726.spinAnimDuration = i727[4]
+  var i729 = i727[5]
   var i728 = []
   for(var i = 0; i < i729.length; i += 2) {
   request.r(i729[i + 0], i729[i + 1], 2, i728, '')
   }
   i726.selectionBalls = i728
-  var i731 = i727[5]
+  var i731 = i727[6]
   var i730 = []
   for(var i = 0; i < i731.length; i += 2) {
   request.r(i731[i + 0], i731[i + 1], 2, i730, '')
@@ -2174,7 +2175,7 @@ Deserializers.productName = "Basketball 3";
 
 Deserializers.lunaInitializationTime = "";
 
-Deserializers.lunaDaysRunning = "1.8";
+Deserializers.lunaDaysRunning = "3.0";
 
 Deserializers.lunaVersion = "6.3.0";
 
@@ -2206,7 +2207,7 @@ Deserializers.isRuntimeAnalysisEnabledForCode = "True";
 
 Deserializers.runtimeAnalysisExcludedClassesCount = "1688";
 
-Deserializers.runtimeAnalysisExcludedMethodsCount = "3716";
+Deserializers.runtimeAnalysisExcludedMethodsCount = "3714";
 
 Deserializers.runtimeAnalysisExcludedModules = "physics2d, reflection";
 
@@ -2230,7 +2231,7 @@ Deserializers.graphicsConstraint = 28;
 
 Deserializers.linearColorSpace = false;
 
-Deserializers.buildID = "cad8d751-5035-4088-aab0-6e0cde24bd2c";
+Deserializers.buildID = "6d55f34d-016d-4a07-9457-41a93c51be47";
 
 Deserializers.runtimeInitializeOnLoadInfos = [[["UnityEngine","Experimental","Rendering","ScriptableRuntimeReflectionSystemSettings","ScriptingDirtyReflectionSystemInstance"]],[],[],[],[]];
 
